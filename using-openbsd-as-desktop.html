@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます． install packages インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)． csh, ksh のパッケージリポジトリ環境変数をセットします． # vi /etc/csh.cshlogin setenv ...">
+        <meta name="description" content="手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます． install packages インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)． csh, ksh のパッケージリポジトリ環境変数をセットします． # vi /etc/csh.cshlogin setenv PKG_PATH ...">
         <meta name="keywords" content="openbsd, os">
         <link rel="icon" href="http://tomohal.github.io/favicon.ico">
 
@@ -79,7 +79,7 @@
 <p>インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)．</p>
 <p>csh, ksh のパッケージリポジトリ環境変数をセットします．</p>
 <div class="highlight"><pre># vi /etc/csh.cshlogin
-setenv PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&quot;
+setenv PKG_PATH ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&quot;
 # vi /etc/profile
 export PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&quot;
 </pre></div>

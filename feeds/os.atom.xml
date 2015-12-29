@@ -4,7 +4,7 @@
 &lt;p&gt;インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)．&lt;/p&gt;
 &lt;p&gt;csh, ksh のパッケージリポジトリ環境変数をセットします．&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# vi /etc/csh.cshlogin
-setenv PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
+setenv PKG_PATH ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
 # vi /etc/profile
 export PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
