@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="このサイトは github pages で提供されています． コンテンツの生成には pelican を使っています． 以下，pelican の使い方をまとめます． 作業は OpenBSD 5.8 の場合です． create user page on github github にアカウントを作り，適当にユーザーページを作 成して，ローカルにクローンします． $ git clone ...">
+        <meta name="keywords" content="pelican, publishing">
+        <link rel="icon" href="http://tomohal.github.io/favicon.ico">
+
+        <title>Using pelican as static html generator - Tomohal.github.io</title>
+
+        <!-- Stylesheets -->
+        <link href="http://tomohal.github.io/theme/css/all.min.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- RSS Feeds -->
+        <link href="http://tomohal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomohal.github.io Full Atom Feed" />
+        <link href="http://tomohal.github.io/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Tomohal.github.io Categories Atom Feed" />
+        <!-- /RSS Feeds -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+    <div class="header-container gradient">
+
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a class="pull-left" href="http://tomohal.github.io/"><img class="mr20" src="http://tomohal.github.io/images/Ball.png" alt="logo">Tomohal.github.io</a>
+                    </div>
+                    <div class="nav pull-right">
+                                <a href="http://tomohal.github.io/">Top</a>
+                                <a href="http://tomohal.github.io/categories.html">Categories</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Static navbar -->
+
+            <!-- Header -->
+    <!-- Header -->
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title">Using pelican as static html generator</h1>
+                      <p class="header-date">By <a href="http://tomohal.github.io/author/tomohal-shimizu.html">Tomohal Shimizu</a>, Mon 28 December 2015, in category <a href="http://tomohal.github.io/category/web.html">Web</a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
+<a href="http://tomohal.github.io/tag/pelican.html">pelican</a>, <a href="http://tomohal.github.io/tag/publishing.html">publishing</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <!-- /Header -->
+            <!-- /Header -->
+
+        </div>
+        <!-- /Header -->
+
+
+        <!-- Content -->
+    <div class="container content">
+        <p>このサイトは github pages で提供されています．
+コンテンツの生成には <a href="http://blog.getpelican.com/">pelican</a> を使っています．
+以下，pelican の使い方をまとめます．
+作業は OpenBSD 5.8 の場合です．</p>
+<h1>create user page on github</h1>
+<p><a href="http://github.com">github</a> にアカウントを作り，適当にユーザーページを作
+成して，ローカルにクローンします．</p>
+<div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/&lt;username&gt;/username.github.io.git
+</pre></div>
+
+
+<p>したら，全部消します (^^;</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>username.github.io
+<span class="nv">$ </span>git rm &lt;いろいろ&gt;
+</pre></div>
+
+
+<h1>install pelican</h1>
+<p>次に pelican をインストールします．</p>
+<div class="highlight"><pre><span class="nv">$ </span>doas pkg_add py-pip
+<span class="nv">$ </span>doas ln -s /usr/local/bin/pip2.7 /usr/local/bin/pip
+<span class="nv">$ </span>doas pip install pelican markdown
+</pre></div>
+
+
+<h1>create a new project</h1>
+<p>プロジェクトを作成します．</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>username.github.io
+<span class="nv">$ </span>pelican-quickstart
+&gt; Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
+&gt; What will be the title of this web site? Random Memo
+&gt; Who will be the author of this web site? tomohal
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> ja
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> http://tomohal.github.io
+&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span> 
+&gt; What is your <span class="nb">time </span>zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> Asia/Tokyo
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> y
+&gt; Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> y
+Done. Your new project is available at /home/tomohal/www/tomohal.github.io
+</pre></div>
+
+
+<h1>create a contents</h1>
+<p>content の下にコンテンツファイルを作ります．試しに，このページを
+Markdown 形式で作成します．</p>
+<div class="highlight"><pre><span class="nv">$ </span>editor content/pelican.md
+</pre></div>
+
+
+<p>html 化は make でできますが，OpenBSD の make は BSD make のため，pelican
+の Makefile を扱うことができません．ので，gmake をインストールします．</p>
+<div class="highlight"><pre><span class="nv">$ </span>doas pkg_add gmake
+</pre></div>
+
+
+<p>したら，html ファイルを生成します．</p>
+<div class="highlight"><pre><span class="nv">$ </span>gmake html
+</pre></div>
+
+
+<p>コンテンツを確認するためにサーバーを立ち上げます．</p>
+<div class="highlight"><pre><span class="nv">$ </span>gmake serve
+</pre></div>
+
+
+<h1>using theme</h1>
+<p>theme を使って外観を変更することができます．
+<a href="http://www.pelicanthemes.com/">Pelican Themes</a>にて適当に選びます．</p>
+<div class="highlight"><pre><span class="nv">$ </span>pelican content -s pelicanconf.py -t /projects/your-site/themes/your-theme
+<span class="nv">$ </span>doas pelican-theme --install folder
+</pre></div>
+
+
+        
+    </div>
+        <!-- /Content --> 
+
+        <!-- Footer -->
+        <div class="footer gradient-2">
+            <div class="container footer-container ">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Sitemap</div>
+                        <ul class="list-unstyled">
+                            <li><a href="http://tomohal.github.io/archives.html">Archives</a></li>
+                            <li><a href="http://tomohal.github.io/tags.html">Tags</a></li>
+                            <li><a href="http://tomohal.github.io/authors.html">Authors</a></li>
+                            <li><a href="http://tomohal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Social</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#" target="_blank"></a></li>
+                            <li><a href="#" target="_blank"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Links</div>
+                        <ul class="list-unstyled">
+                            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+                            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <p class="pull-right text-right">
+                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                            <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                            <small>&copy; blogname 2015</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer -->
+    </body>
+</html>

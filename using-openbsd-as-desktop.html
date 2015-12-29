@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Tomohal.github.io, Thinking now">
-        <meta name="keywords" content="">
+        <meta name="description" content="手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます． install packages インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)． csh, ksh のパッケージリポジトリ環境変数をセットします． # vi /etc/csh.cshlogin setenv ...">
+        <meta name="keywords" content="openbsd, os">
         <link rel="icon" href="http://tomohal.github.io/favicon.ico">
 
-        <title>Top - Tomohal.github.io</title>
+        <title>Using OpenBSD as Desktop - Tomohal.github.io</title>
 
         <!-- Stylesheets -->
         <link href="http://tomohal.github.io/theme/css/all.min.css" rel="stylesheet">
@@ -16,6 +16,7 @@
 
         <!-- RSS Feeds -->
         <link href="http://tomohal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomohal.github.io Full Atom Feed" />
+        <link href="http://tomohal.github.io/feeds/os.atom.xml" type="application/atom+xml" rel="alternate" title="Tomohal.github.io Categories Atom Feed" />
         <!-- /RSS Feeds -->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,16 +49,23 @@
             <!-- /Static navbar -->
 
             <!-- Header -->
+    <!-- Header -->
     <div class="container header-wrapper">
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
-                      <h1 class="header-title">Archives (仮)</h1>
+                      <h1 class="header-title">Using OpenBSD as Desktop</h1>
+                      <p class="header-date">By <a href="http://tomohal.github.io/author/tomohal-shimizu.html">Tomohal Shimizu</a>, Tue 29 December 2015, in category <a href="http://tomohal.github.io/category/os.html">Os</a></p>
                       <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
+<a href="http://tomohal.github.io/tag/openbsd.html">openbsd</a>, <a href="http://tomohal.github.io/tag/os.html">os</a>                      </p>
                   </div>
               </div>
         </div>
     </div>
+    <!-- /Header -->
             <!-- /Header -->
 
         </div>
@@ -65,17 +73,71 @@
 
 
         <!-- Content -->
-    
-    <div class="archive-container">
-        <div class="container content archive">
-            <h2><a href="http://tomohal.github.io/index.html">Last Posts </a></h2>
-            <dl class="dl-horizontal">
-                <dt>Tue 29 December 2015</dt>
-                <dd><a href="http://tomohal.github.io/using-openbsd-as-desktop.html">Using OpenBSD as Desktop</a></dd>
-                <dt>Mon 28 December 2015</dt>
-                <dd><a href="http://tomohal.github.io/using-pelican.html">Using pelican as static html generator</a></dd>
-            </dl>
-        </div>
+    <div class="container content">
+        <p>手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます．</p>
+<h1>install packages</h1>
+<p>インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)．</p>
+<p>csh, ksh のパッケージリポジトリ環境変数をセットします．</p>
+<div class="highlight"><pre># vi /etc/csh.cshlogin
+setenv PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&quot;
+# vi /etc/profile
+export PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&quot;
+</pre></div>
+
+
+<p>日本語環境として必要なパッケージを入れます．</p>
+<div class="highlight"><pre># pkg_add ja-sazanami-ttf
+# pkg_add scim-anthy
+# pkg_add firefox firefox-i18n-ja-39.0.3
+</pre></div>
+
+
+<p>デフォルトの window manager は fvwm です．
+適当に window manager を入れます．</p>
+<div class="highlight"><pre># pkg_add windowmaker windowmaker-extra windowmaker-lang wmclock wmmon
+</pre></div>
+
+
+<h1>setup</h1>
+<p>.xsession を編集します．</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="c">#</span>
+<span class="nv">PATH</span><span class="o">=</span>/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
+<span class="nv">WM</span><span class="o">=</span><span class="k">$(</span>which wmaker<span class="k">)</span>
+<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>ja_JP.UTF-8
+<span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>SCIM
+<span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span><span class="s2">&quot;@im=SCIM&quot;</span>
+scim -d
+<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>C
+setxkbmap -option ctrl:nocaps
+xscreensaver <span class="p">&amp;</span>
+<span class="k">if</span> <span class="o">[</span> -x <span class="si">${</span><span class="nv">WM</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">exec</span> <span class="si">${</span><span class="nv">WM</span><span class="si">}</span>
+<span class="k">else</span>
+    <span class="nb">exec </span>fvwm
+<span class="k">fi</span>
+</pre></div>
+</td></tr></table>
+
+<p>これで，Firefox に日本語入力することができます．</p>
+
+
+        
     </div>
         <!-- /Content --> 
 

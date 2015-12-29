@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tomohal.github.io</title><link href="http://tomohal.github.io/" rel="alternate"></link><link href="http://tomohal.github.io/feeds/web.atom.xml" rel="self"></link><id>http://tomohal.github.io/</id><updated>2015-12-28T00:00:00+09:00</updated><entry><title>Using pelican as static html generator</title><link href="http://tomohal.github.io/using-pelican.html" rel="alternate"></link><updated>2015-12-28T00:00:00+09:00</updated><author><name>Tomohal Shimizu</name></author><id>tag:tomohal.github.io,2015-12-28:using-pelican.html</id><summary type="html">&lt;p&gt;このサイトは github pages で提供されています．
+コンテンツの生成には &lt;a href="http://blog.getpelican.com/"&gt;pelican&lt;/a&gt; を使っています．
+以下，pelican の使い方をまとめます．
+作業は OpenBSD 5.8 の場合です．&lt;/p&gt;
+&lt;h1&gt;create user page on github&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://github.com"&gt;github&lt;/a&gt; にアカウントを作り，適当にユーザーページを作
+成して，ローカルにクローンします．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone https://github.com/&amp;lt;username&amp;gt;/username.github.io.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;したら，全部消します (^^;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;username.github.io
+&lt;span class="nv"&gt;$ &lt;/span&gt;git rm &amp;lt;いろいろ&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;install pelican&lt;/h1&gt;
+&lt;p&gt;次に pelican をインストールします．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;doas pkg_add py-pip
+&lt;span class="nv"&gt;$ &lt;/span&gt;doas ln -s /usr/local/bin/pip2.7 /usr/local/bin/pip
+&lt;span class="nv"&gt;$ &lt;/span&gt;doas pip install pelican markdown
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;create a new project&lt;/h1&gt;
+&lt;p&gt;プロジェクトを作成します．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;username.github.io
+&lt;span class="nv"&gt;$ &lt;/span&gt;pelican-quickstart
+&amp;gt; Where &lt;span class="k"&gt;do&lt;/span&gt; you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt; 
+&amp;gt; What will be the title of this web site? Random Memo
+&amp;gt; Who will be the author of this web site? tomohal
+&amp;gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt; ja
+&amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example&lt;span class="p"&gt;;&lt;/span&gt; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://tomohal.github.io
+&amp;gt; Do you want to &lt;span class="nb"&gt;enable &lt;/span&gt;article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt; 
+&amp;gt; What is your &lt;span class="nb"&gt;time &lt;/span&gt;zone? &lt;span class="o"&gt;[&lt;/span&gt;Europe/Paris&lt;span class="o"&gt;]&lt;/span&gt; Asia/Tokyo
+&amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; y
+&amp;gt; Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; y
+Done. Your new project is available at /home/tomohal/www/tomohal.github.io
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;create a contents&lt;/h1&gt;
+&lt;p&gt;content の下にコンテンツファイルを作ります．試しに，このページを
+Markdown 形式で作成します．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;editor content/pelican.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;html 化は make でできますが，OpenBSD の make は BSD make のため，pelican
+の Makefile を扱うことができません．ので，gmake をインストールします．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;doas pkg_add gmake
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;したら，html ファイルを生成します．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gmake html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;コンテンツを確認するためにサーバーを立ち上げます．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gmake serve
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;using theme&lt;/h1&gt;
+&lt;p&gt;theme を使って外観を変更することができます．
+&lt;a href="http://www.pelicanthemes.com/"&gt;Pelican Themes&lt;/a&gt;にて適当に選びます．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pelican content -s pelicanconf.py -t /projects/your-site/themes/your-theme
+&lt;span class="nv"&gt;$ &lt;/span&gt;doas pelican-theme --install folder
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tomohal.github.io</title><link href="http://tomohal.github.io/" rel="alternate"></link><link href="http://tomohal.github.io/feeds/os.atom.xml" rel="self"></link><id>http://tomohal.github.io/</id><updated>2015-12-29T00:00:00+09:00</updated><entry><title>Using OpenBSD as Desktop</title><link href="http://tomohal.github.io/using-openbsd-as-desktop.html" rel="alternate"></link><updated>2015-12-29T00:00:00+09:00</updated><author><name>Tomohal Shimizu</name></author><id>tag:tomohal.github.io,2015-12-29:using-openbsd-as-desktop.html</id><summary type="html">&lt;p&gt;手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます．&lt;/p&gt;
+&lt;h1&gt;install packages&lt;/h1&gt;
+&lt;p&gt;インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)．&lt;/p&gt;
+&lt;p&gt;csh, ksh のパッケージリポジトリ環境変数をセットします．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# vi /etc/csh.cshlogin
+setenv PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
+# vi /etc/profile
+export PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;日本語環境として必要なパッケージを入れます．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# pkg_add ja-sazanami-ttf
+# pkg_add scim-anthy
+# pkg_add firefox firefox-i18n-ja-39.0.3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;デフォルトの window manager は fvwm です．
+適当に window manager を入れます．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# pkg_add windowmaker windowmaker-extra windowmaker-lang wmclock wmmon
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;setup&lt;/h1&gt;
+&lt;p&gt;.xsession を編集します．&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
+&lt;span class="nv"&gt;WM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;which wmaker&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ja_JP.UTF-8
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GTK_IM_MODULE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SCIM
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;XMODIFIERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@im=SCIM&amp;quot;&lt;/span&gt;
+scim -d
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C
+setxkbmap -option ctrl:nocaps
+xscreensaver &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -x &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;WM&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;exec&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;WM&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="nb"&gt;exec &lt;/span&gt;fvwm
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;これで，Firefox に日本語入力することができます．&lt;/p&gt;</summary><category term="openbsd"></category><category term="os"></category></entry></feed>
