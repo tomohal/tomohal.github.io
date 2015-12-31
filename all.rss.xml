@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Tomohal.github.io</title><link href="http://tomohal.github.io/" rel="alternate"></link><link href="http://tomohal.github.io/feeds/all.atom.xml" rel="self"></link><id>http://tomohal.github.io/</id><updated>2015-12-29T00:00:00+09:00</updated><entry><title>Reading Yet Another Haskell Tutorial</title><link href="http://tomohal.github.io/reading-yet-another-haskell-tutorial.html" rel="alternate"></link><updated>2015-12-29T00:00:00+09:00</updated><author><name>Tomohal Shimizu</name></author><id>tag:tomohal.github.io,2015-12-29:reading-yet-another-haskell-tutorial.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial"&gt;Yet Another Haskell Tutorial&lt;/a&gt; を読みます．&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tomohal.github.io</title><link>http://tomohal.github.io/</link><description>まったりずむ</description><atom:link href="http://tomohal.github.io/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 29 Dec 2015 00:00:00 +0900</lastBuildDate><item><title>Reading Yet Another Haskell Tutorial</title><link>http://tomohal.github.io/reading-yet-another-haskell-tutorial.html</link><description>&lt;p&gt;&lt;a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial"&gt;Yet Another Haskell Tutorial&lt;/a&gt; を読みます．&lt;/p&gt;
 &lt;h1&gt;How to run the compiler&lt;/h1&gt;
 &lt;p&gt;ghc の使い方．&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ghc --make program.hs -o program
@@ -7,7 +7,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;Write your first program&lt;/h1&gt;</summary><category term="programming"></category><category term="haskell"></category></entry><entry><title>Using OpenBSD as Desktop</title><link href="http://tomohal.github.io/using-openbsd-as-desktop.html" rel="alternate"></link><updated>2015-12-29T00:00:00+09:00</updated><author><name>Tomohal Shimizu</name></author><id>tag:tomohal.github.io,2015-12-29:using-openbsd-as-desktop.html</id><summary type="html">&lt;p&gt;手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます．&lt;/p&gt;
+&lt;h1&gt;Write your first program&lt;/h1&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tomohal Shimizu</dc:creator><pubDate>Tue, 29 Dec 2015 00:00:00 +0900</pubDate><guid>tag:tomohal.github.io,2015-12-29:reading-yet-another-haskell-tutorial.html</guid><category>programming</category><category>haskell</category></item><item><title>Using OpenBSD as Desktop</title><link>http://tomohal.github.io/using-openbsd-as-desktop.html</link><description>&lt;p&gt;手持ちの Thinkpad X200s に OpenBSD を入れて使っているので備忘録としてセットアップについて書きます．&lt;/p&gt;
 &lt;h1&gt;install packages&lt;/h1&gt;
 &lt;p&gt;インストール中に xdm を使うとしておくと，xdm が起動しています(当たり前)．&lt;/p&gt;
 &lt;p&gt;csh, ksh のパッケージリポジトリ環境変数をセットします．&lt;/p&gt;
@@ -67,7 +67,7 @@ xscreensaver &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;これで，Firefox に日本語入力することができます．&lt;/p&gt;</summary><category term="openbsd"></category><category term="os"></category></entry><entry><title>Using pelican as static html generator</title><link href="http://tomohal.github.io/using-pelican.html" rel="alternate"></link><updated>2015-12-28T00:00:00+09:00</updated><author><name>Tomohal Shimizu</name></author><id>tag:tomohal.github.io,2015-12-28:using-pelican.html</id><summary type="html">&lt;p&gt;このサイトは github pages で提供されています．
+&lt;p&gt;これで，Firefox に日本語入力することができます．&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tomohal Shimizu</dc:creator><pubDate>Tue, 29 Dec 2015 00:00:00 +0900</pubDate><guid>tag:tomohal.github.io,2015-12-29:using-openbsd-as-desktop.html</guid><category>openbsd</category><category>os</category></item><item><title>Using pelican as static html generator</title><link>http://tomohal.github.io/using-pelican.html</link><description>&lt;p&gt;このサイトは github pages で提供されています．
 コンテンツの生成には &lt;a href="http://blog.getpelican.com/"&gt;pelican&lt;/a&gt; を使っています．
 以下，pelican の使い方をまとめます．
 作業は OpenBSD 5.8 の場合です．&lt;/p&gt;
@@ -178,4 +178,4 @@ Markdown 形式で作成します．&lt;/p&gt;
 &lt;span class="n"&gt;Total&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;reused&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tomohal&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tomohal&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
     &lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="n"&gt;d2dc2&lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="n"&gt;f9cebd5&lt;/span&gt;  &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tomohal Shimizu</dc:creator><pubDate>Mon, 28 Dec 2015 00:00:00 +0900</pubDate><guid>tag:tomohal.github.io,2015-12-28:using-pelican.html</guid><category>pelican</category><category>publishing</category></item></channel></rss>

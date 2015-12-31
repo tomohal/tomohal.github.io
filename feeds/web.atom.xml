@@ -73,6 +73,11 @@ Markdown 形式で作成します．&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;コンテンツの生成を自動的に行ってくれるローカルサーバーは以下のように起動します．&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gmake devserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h1&gt;using theme&lt;/h1&gt;
 &lt;p&gt;theme を使って外観を変更することができます．
 &lt;a href="http://www.pelicanthemes.com/"&gt;Pelican Themes&lt;/a&gt;にて適当に選びます．&lt;/p&gt;

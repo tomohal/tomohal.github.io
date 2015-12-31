@@ -13,7 +13,7 @@ export PKG_PATH=ftp://ftp.jaist.ac.jp/pub/OpenBSD/5.8/packages/amd64/&amp;quot;
 &lt;p&gt;日本語環境として必要なパッケージを入れます．&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# pkg_add ja-sazanami-ttf
 # pkg_add scim-anthy
-# pkg_add firefox firefox-i18n-ja-39.0.3
+# pkg_add firefox firefox-i18n-ja-39.0.3 gnash
 &lt;/pre&gt;&lt;/div&gt;
 
 
